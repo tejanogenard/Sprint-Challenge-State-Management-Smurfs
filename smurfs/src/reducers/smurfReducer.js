@@ -15,6 +15,7 @@ export const initalState = {
                 ...state,
                 isFetchingData: true
             }
-            default: return state
+            default: 
+                return state
     }
  }
