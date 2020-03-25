@@ -1,7 +1,7 @@
-import { GET_DATA } from "../actions/actionIndex"
+import { GET_DATA, UPDATE_SMURFS } from "../actions/actionIndex"
 
 export const initalState = {
-    smurfs: [],
+    smurfs: {},
     isFetchingData: false,
     error: " "
 }
@@ -13,8 +13,14 @@ export const initalState = {
         case GET_DATA:
             return{
                 ...state,
-                isFetchingData: true
+                isFetchingData: true,
+                smurfs: []
             }
+            case UPDATE_SMURFS:
+                return{
+                    ...state,
+                    smurfs: action.payload
+                }
             default: 
                 return state
     }
