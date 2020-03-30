@@ -1,12 +1,12 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { connect } from "react-redux"
 
 const SmurfList = props => {
-    return (
+    return(
         <>
-        {props.smurfs.map(smurf => (
-            <div>smurf.smurf_name</div>
-        ))}
+            {props.smurfs.map(smurf => (
+            <div>{smurf.name}</div>)
+            )}
         </>
     )
 }
@@ -20,5 +20,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    {}
-  )(SmurfList);
+    { }
+)(SmurfList)
