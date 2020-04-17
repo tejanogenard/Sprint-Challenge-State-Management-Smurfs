@@ -1,21 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { getSmurfData, postSmurfData } from '../actions/actionIndex'
 
 
 
 const SmurfForm = props => {
-
-   const state = {
-        newSmurfs: [
-            {
-              name: '',
-              age: Number,
-              height: Number,
-              id: Date.now()
-            }
-          ]
+const [smurfs, setSmurfs] = useState(
+    {
+    name: "",
+    age: '',
+    height: "",
+    id: Date.now()
     }
+)
 
 
 const handleData =e => {
@@ -25,7 +22,15 @@ const handleData =e => {
 
 const handlePostData = e => {
     e.preventDefault()
-    props.postSmurfData()
+    props.postSmurfData(smurfs)
+    console.log(smurfs)
+}
+
+const handleChange = e => {
+    console.log(e.target.name, e.target.value)
+    console.log(smurfs)
+    // e.preventDefault()
+    setSmurfs({...smurfs, [e.target.name]: e.target.value})
 }
 
 
@@ -42,24 +47,31 @@ const handlePostData = e => {
         <form>
             <input 
                 type = "text"
-                placeholder = "name"     
-                value ={state.newSmurfs.name}  
-                      
+                placeholder = "name"   
+                name = "name"  
+                value ={smurfs.name}  
+                 onChange={ e => handleChange(e)}      
             />
              <input 
                 type = "number"
                 placeholder = "age"     
-                value = {state.newSmurfs.age}        
+                name = "age"
+                value = {smurfs.age}     
+                onChange={ e => handleChange(e)}         
             />
              <input 
                 type = "number"
-                placeholder = "height"      
-                value = {state.newSmurfs.height}       
+                placeholder = "height"    
+                name ="height"  
+                value = {smurfs.height}  
+                onChange={ e => handleChange(e)}           
             />
              <input 
                 type = "number"
-                placeholder = "id"             
-                value = {state.newSmurfs.id}
+                placeholder = "id"         
+                name = 'id'    
+                value = {smurfs.id}
+                onChange={ e => handleChange(e)}      
             />
            <button onClick ={handlePostData}>Create your own smurf</button>
         </form>
