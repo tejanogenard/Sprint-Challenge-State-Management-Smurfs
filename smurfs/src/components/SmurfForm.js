@@ -24,7 +24,8 @@ const handleData =e => {
 }
 
 const handlePostData = e => {
-    this.setState({newSmurf: e.target.value})
+    e.preventDefault()
+    props.postSmurfData()
 }
 
 
@@ -61,7 +62,6 @@ const handlePostData = e => {
                 value = {state.newSmurfs.id}
             />
            <button onClick ={handlePostData}>Create your own smurf</button>
-           
         </form>
         </div>
      </>
