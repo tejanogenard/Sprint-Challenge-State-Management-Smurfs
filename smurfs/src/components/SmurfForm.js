@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { getSmurfData, postSmurfData } from '../actions/actionIndex'
 
-
-
 const SmurfForm = props => {
 const [smurfs, setSmurfs] = useState(
     {
@@ -14,7 +12,6 @@ const [smurfs, setSmurfs] = useState(
     }
 )
 
-
 const handleData =e => {
     e.preventDefault()
     props.getSmurfData()
@@ -23,17 +20,11 @@ const handleData =e => {
 const handlePostData = e => {
     e.preventDefault()
     props.postSmurfData(smurfs)
-    console.log(smurfs)
 }
 
 const handleChange = e => {
-    console.log(e.target.name, e.target.value)
-    console.log(smurfs)
-    // e.preventDefault()
     setSmurfs({...smurfs, [e.target.name]: e.target.value})
 }
-
-
 
     return(
      <>
@@ -42,7 +33,6 @@ const handleChange = e => {
      ): ( 
      <button onClick ={handleData}> GET SMURFED </button>)
      }
-       {/* add post request here to add a new smurf*/}
        <div>
         <form>
             <input 
@@ -50,7 +40,7 @@ const handleChange = e => {
                 placeholder = "name"   
                 name = "name"  
                 value ={smurfs.name}  
-                 onChange={ e => handleChange(e)}      
+                onChange={ e => handleChange(e)}      
             />
              <input 
                 type = "number"
@@ -85,7 +75,6 @@ const mapStateToProps = state => {
         isFetching: state.isFetching
     }
 }
-
 
 export default connect(
     mapStateToProps,
